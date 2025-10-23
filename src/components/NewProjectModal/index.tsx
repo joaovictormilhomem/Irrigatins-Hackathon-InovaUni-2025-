@@ -41,8 +41,6 @@ export default function NewProjectModal({ isOpen, setIsOpen }: ModalBaseProps) {
     values.etc = calcularETc(Number(values.et0), 1.125)
     values.laminaDeAplicacao = calcularLaminaDeAplicacao(Number(values.etc), Number(values.eficienciaDoSistema))
     values.tempoIrrigacao = calcularTempoIrrigacao(Number(values.laminaDeAplicacao), Number(values.taxaAplicacao))
-    console.log(values)
-    
 
     createProject(values)
     closeModal()

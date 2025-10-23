@@ -7,7 +7,7 @@ import { deleteProject, getProjects } from "./logic/localStorage"
 import type { TProject } from "./types"
 import { getWeather } from "./logic/wheather"
 import { useGeolocation } from "./hooks/useGeolocation"
-import './style.css'
+import './styles/style.css'
 
 const fakeProject = {
   name: "",
@@ -33,13 +33,12 @@ export default function App() {
     if (!location.isLoading && location.position?.latitude && location.position?.longitude) {
       getWeather(location.position?.latitude, location.position?.longitude, setWeather)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.isLoading])
+  }, [location.isLoading, location.position?.latitude, location.position?.longitude])
 
   useEffect(() => {
     setFilteredProjects(getFilteredProjects())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isNewProjectModalOpen])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search, isNewProjectModalOpen])
 
   function getFilteredProjects() {
     const projects: TProject[] = getProjects()

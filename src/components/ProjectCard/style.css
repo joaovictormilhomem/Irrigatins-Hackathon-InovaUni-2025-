@@ -1,7 +1,7 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  width: 220px;
+  width: 420px;
   height: max(120px, 100%);
   padding: 15px;
   border-radius: 10px;
