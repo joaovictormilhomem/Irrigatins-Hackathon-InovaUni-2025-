@@ -8,6 +8,8 @@ O objetivo é transformar a irrigação em uma **tecnologia de Baixa Emissão de
 
 O objetivo central é fornecer diariamente ao produtor rural a **lâmina d'água exata (mm)** e o **tempo de irrigação (horas)**, promovendo uma economia média esperada de **15% de água** por ciclo.
 
+Link do projeto: https://irrigatins.netlify.app/
+
 ## 2. Tecnologias e Arquitetura
 
 O projeto utiliza uma arquitetura moderna, baseada no ecossistema **JavaScript/TypeScript**, garantindo legibilidade, simplicidade e agilidade no desenvolvimento.
