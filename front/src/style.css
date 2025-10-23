@@ -1,0 +1,66 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  .colors-legend {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+
+    .color-legend {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      .color-legend-ball {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+      }
+
+      .cl-green {
+        background-color: var(--green);
+      }
+
+      .cl-yellow {
+        background-color: var(--yellow);
+      }
+
+      .cl-red {
+        background-color: var(--red);
+      }
+
+      span {
+        font-weight: bolder;
+      }
+    }
+  }
+
+  .search {
+    padding: 10px;
+    width: 80%;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .search:focus {
+    border-color: var(--green);
+  }
+
+  .project-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .fabs {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+}
