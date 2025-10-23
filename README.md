@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# 🌱 IRRIGATINS: Manejo Inteligente da Irrigação
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. Sobre o Projeto
 
-Currently, two official plugins are available:
+O **IrrigaTins** é um MVP de um sistema criado para ajudar a resolver a ineficiência na agricultura irrigada, causada pela falta de gestão de dados climáticos e assistência técnica.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O objetivo é transformar a irrigação em uma **tecnologia de Baixa Emissão de Carbono** através da máxima eficiência no uso de água e energia.
 
-## React Compiler
+O objetivo central é fornecer diariamente ao produtor rural a **lâmina d'água exata (mm)** e o **tempo de irrigação (horas)**, promovendo uma economia média esperada de **15% de água** por ciclo.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 2. Tecnologias e Arquitetura
 
-## Expanding the ESLint configuration
+O projeto utiliza uma arquitetura moderna, baseada no ecossistema **JavaScript/TypeScript**, garantindo legibilidade, simplicidade e agilidade no desenvolvimento.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2.1. Tecnologias Utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Framework:** React
+- **Linguagem:** TypeScript
+- **Ferramenta de Build:** Vite
+- **Estilização:** CSS
+- **Gerenciamento de Estado/Utilitários:** `react-use`
+- **Modais:** `react-modal`
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 2.2 Estrutura do Projeto
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+O projeto segue uma estrutura padrão de aplicação React:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- `public/`: Ativos estáticos.
+- `src/`: Código fonte principal da aplicação.
+  - `assets/`: Imagens, ícones, etc.
+  - `components/`: Componentes de UI reutilizáveis.
+  - `hooks/`: Hooks React personalizados.
+  - `logic/`: Lógica de negócios e funções utilitárias.
+  - `pages/`: Páginas/telas da aplicação.
+  - `styles/`: Estilos globais e resets CSS.
+  - `main.tsx`: Ponto de entrada da aplicação.
+  - `router.tsx`: Configuração de roteamento da aplicação.
+  - `types.ts`: Definições de tipos TypeScript globais.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 3. Instruções para Rodar o Projeto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 3.1. Pré-requisitos (Configurações e Dependências)
+
+#### 3.1.1. Verificação de Ferramentas
+
+Certifique-se de ter as seguintes ferramentas instaladas globalmente:
+
+- **Node.js** (versão LTS recomendada)
+- **npm** (instalado com o Node.js) ou `yarn`
+- **Git**
+
+### 3.2 Clonagem e Instalação
+
+1.  **Utilize os comandos abaixo para clonar o repositório e navegar para o diretório do projeto:**
+    ```bash
+    git clone https://github.com/joaovictormilhomem/Irrigatins-Hackathon-InovaUni-2025-.git
+    cd Irrigatins-Hackathon-InovaUni-2025-
+    ```
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+3.  **Adicione a sua API KEY de https://openweathermap.org/api ao arquivo .env com o nome VITE_WEATHER_API_KEY**
+
+4.  **Para rodar o projeto, use o comando:**
+    ```bash
+    npx vite
+    ```

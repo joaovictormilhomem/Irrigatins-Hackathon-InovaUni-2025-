@@ -1,25 +1,15 @@
 import { useEffect, useState } from "react"
-import Fab from "./components/Fab"
-import Header from "./components/Header"
-import ProjectCard from "./components/ProjectCard"
-import NewProjectModal from "./components/NewProjectModal"
-import { deleteProject, getProjects } from "./logic/localStorage"
-import type { TProject } from "./types"
-import { getWeather } from "./logic/wheather"
-import { useGeolocation } from "./hooks/useGeolocation"
-import './styles/style.css'
+import './style.css'
+import { useGeolocation } from "../../hooks/useGeolocation"
+import { getWeather } from "../../logic/wheather"
+import type { TProject } from "../../types"
+import { deleteProject, getProjects } from "../../logic/localStorage"
+import NewProjectModal from "../../components/NewProjectModal"
+import Header from "../../components/Header"
+import ProjectCard from "../../components/ProjectCard"
+import Fab from "../../components/Fab"
 
-const fakeProject = {
-  name: "",
-  vazao: "",
-  espacamento: "",
-  eficienciaDoSistema: "",
-  laminaLiquida: "",
-  turnoDeRega: "",
-  cultura: ""
-}
-
-export default function App() {
+export default function Home() {
   const [isNewProjectModalOpen, setIsNewProjectModalOpen] = useState(false)
   const [search, setSearch] = useState("")
   const [filteredProjects, setFilteredProjects] = useState(getFilteredProjects())
@@ -37,7 +27,7 @@ export default function App() {
 
   useEffect(() => {
     setFilteredProjects(getFilteredProjects())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, isNewProjectModalOpen])
 
   function getFilteredProjects() {
@@ -79,7 +69,6 @@ export default function App() {
             <ProjectCard project={project} key={project.name} handleProjectDelete={handleProjectDelete} />
           ))
         }
-        <ProjectCard project={fakeProject} key={fakeProject.name} handleProjectDelete={handleProjectDelete} invisible />
       </div>
 
       <div className="fabs">
