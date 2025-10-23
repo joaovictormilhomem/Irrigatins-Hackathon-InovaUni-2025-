@@ -62,7 +62,7 @@ Certifique-se de ter as seguintes ferramentas instaladas globalmente:
     ```bash
     npm install
     ```
-3.  **Adicione a sua API KEY de https://openweathermap.org/api ao arquivo .env com o nome VITE_WEATHER_API_KEY**
+3.  **Adicione a sua API KEY de https://openweathermap.org/api em um arquivo .env na raiz do projeto, seguindo o modelo do arquivo .env.example**
 
 4.  **Para rodar o projeto, use o comando:**
     ```bash
