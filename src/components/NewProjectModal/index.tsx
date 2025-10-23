@@ -3,6 +3,7 @@ import ReactModal from "react-modal"
 import "./styles.css"
 import { createProject } from "../../logic/localStorage"
 import { calcularET0, calcularETc, calcularLamina, calcularLaminaDeAplicacao, calcularTaxaAplicacao, calcularTempoIrrigacao } from "../../logic/calcs"
+import { getTemperatures } from "../../logic/wheather"
 
 ReactModal.setAppElement('#root')
 
@@ -23,7 +24,7 @@ const initialValues = {
   cultura: ""
 }
 
-export default function NewProjectModal({ isOpen, setIsOpen }: ModalBaseProps) {
+export default function NewProjectModal({ isOpen, setIsOpen, weather }: ModalBaseProps) {
   const [error, setError] = useState('')
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [values, setValues] = useState(initialValues as any)
@@ -34,10 +35,10 @@ export default function NewProjectModal({ isOpen, setIsOpen }: ModalBaseProps) {
       setError("Escolha uma cultura!")
       return
     }
-    
+    const { minTemp, maxTemp } = getTemperatures(weather)
     values.taxaAplicacao = calcularTaxaAplicacao(Number(values.vazao), Number(values.espacamento))
     values.calcularLamina = calcularLamina(Number(values.laminaLiquida), Number(values.eficienciaDoSistema))
-    values.et0 = calcularET0(38, 3)
+    values.et0 = calcularET0(maxTemp, minTemp)
     values.etc = calcularETc(Number(values.et0), 1.125)
     values.laminaDeAplicacao = calcularLaminaDeAplicacao(Number(values.etc), Number(values.eficienciaDoSistema))
     values.tempoIrrigacao = calcularTempoIrrigacao(Number(values.laminaDeAplicacao), Number(values.taxaAplicacao))
