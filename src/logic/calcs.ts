@@ -1,56 +1,57 @@
-export function calcularTaxaAplicacao(vazao, espacamento) { 
+export function calcularTaxaAplicacao(vazao: number, espacamento: number) { 
     return vazao / espacamento;
 }
 
-export function calcularLamina(laminaLiquida, eficienciaDecimal) {
+export function calcularLamina(laminaLiquida: number, eficienciaDecimal: number) {
   if (eficienciaDecimal === 0) return 0;
   return laminaLiquida / converterParaDecimal(eficienciaDecimal);
 }
 
-export function calcularLaminaDeAplicacao(etc, eficienciaDecimal) {
+export function calcularLaminaDeAplicacao(etc: number, eficienciaDecimal: number) {
   if (eficienciaDecimal === 0) return 0;
   return etc / converterParaDecimal(eficienciaDecimal);
 }
 
-export function converterParaDecimal(porcentagem) {
+export function converterParaDecimal(porcentagem: number) {
   return porcentagem / 100;
 }
 
 
 
-export function calcularET0(maxTemp, minTemp) {
+export function calcularET0(maxTemp: number, minTemp: number) {
     const mediaTemp = (maxTemp + minTemp) / 2;
     const parteTemp = Math.sqrt(maxTemp - minTemp); 
   
     return 0.0135 * 0.159 * parteTemp * (mediaTemp + 14.9) * (39.5 / 2.45);
 }
 
-export function calcularETc(et0dia, coeficienteKc) {
+export function calcularETc(et0dia: number, coeficienteKc: number) {
     return et0dia * coeficienteKc;
 }
 
-export function calcularETcAcumulado(
-  listaTempMax, 
-  listaTempMin, 
-  listaRadiacao, 
-  coeficienteKc
-) {
-  let etcTotal = 0.0;
-  for (let i = 0; i < listaTempMax.length; i++) {
-    const tMax = listaTempMax[i];
-    const tMin = listaTempMin[i];
-    const rad = listaRadiacao[i];
+// export function calcularETcAcumulado(
+//   listaTempMax: string | any[], 
+//   listaTempMin: any[], 
+//   listaRadiacao: any[], 
+//   coeficienteKc: any
+// ) {
+//   let etcTotal = 0.0;
+//   for (let i = 0; i < listaTempMax.length; i++) {
+//     const tMax = listaTempMax[i];
+//     const tMin = listaTempMin[i];
+//     const rad = listaRadiacao[i];
 
-    const et0Dia = calcularET0(tMax, tMin, rad); 
+//     const et0Dia = calcularET0(tMax, tMin, rad); 
 
-    const etcDia = calcularETc(et0Dia, 1.125);
+//     const etcDia = calcularETc(et0Dia, 1.125);
     
-    etcTotal += etcDia;
-  }
-  return etcTotal;
-}
+//     etcTotal += etcDia;
+//   }
+//   return etcTotal;
+// }
 
-export function calcularPrecipitacaoAcumulada(listaChuva) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function calcularPrecipitacaoAcumulada(listaChuva: any) {
   let pTotal = 0.0;
   for (const chuva of listaChuva) {
     pTotal += chuva;
@@ -58,21 +59,11 @@ export function calcularPrecipitacaoAcumulada(listaChuva) {
   return pTotal;
 }
 
-export function calcularAguaPerdida(etcTotal, pTotal){
+export function calcularAguaPerdida(etcTotal: number, pTotal: number){
     return etcTotal - pTotal;
 }
 
-export function calcularTempoIrrigacao(laminaAplicar, taxaAplicacao){
+export function calcularTempoIrrigacao(laminaAplicar: number, taxaAplicacao: number){
     if (taxaAplicacao === 0) return 0;
     return laminaAplicar / taxaAplicacao;
 }
-
-
-
-// console.log(calcularTaxaAplicacao(1215, 225));
-// console.log(calcularLamina(30, 80));
-// console.log(calcularET0(33.8, 23.2, 39.55));
-// console.log(calcularETc(4.9, 0.45));
-// console.log(calcularAguaPerdida(25.2, 15));
-// console.log(calcularLamina(10.2, 80));
-// console.log(calcularTempoIrrigacao(12.75, 5.4));
